@@ -1,27 +1,40 @@
-<div id="<%= dom_id submission %>">
-  <p>
-    <strong>Title:</strong>
-    <%= submission.title %>
-  </p>
+<li id="<%= dom_id submission %>">
+  <div class="flex flex-wrap items-center px-2 pt-2 pb-2">
+    <div>
+      <% if submission.media.attached %>
+        <% if submission.media.video? %>
+          <%= video_tag submission.media %>
+        <% else %>
+          <%= image_tag submission.media, alt: submission.title, class: "" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="<%= "pl-4" if submission.media.attached? %>">
+      <h3 class="flex flex-wrap items-center mb-1 text-xl">
+        <%= link_to submission.title, submission, class: "no-underline" %>
+        <% if submission.url? %>
+          <span class="pl-2 font-mono text-xs font-normal tracking-tighter text-indigo-400">
+            <%= truncate(submission.url, length: 18)%>
+          </span>
+        <% end %>
+      </h3>
+      <% if submission.body? %>
+      <div class="text-sm text-gray-700">
+        <%= truncate(submission.body, length: 140) %>
+      </div>
+      <% end %>
 
-  <p>
-    <strong>Body:</strong>
-    <%= submission.body %>
-  </p>
+      <% if user_signed_in? && current_user.id == submission.user_id %>
+        <div class="flex flex-wrap items-center pt-2">
+            <%= link_to edit_submission_path(submission), class: "no-underline mr-2" do %>
+<%= render_svg "icons/edit", title: "Edit", styles: "fill-current text-gray-400 w-5 h-5 hover:text-indigo-600"%>
+            <% end %>
 
-  <p>
-    <strong>Url:</strong>
-    <%= submission.url %>
-  </p>
-
-  <p>
-    <strong>Media:</strong>
-    <%= link_to submission.media.filename, submission.media if submission.media.attached? %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= submission.user_id %>
-  </p>
-
-</div>
+            <%= link_to submission_path(submission), method: :delete, class: "no-underline mr-2" do %>
+<%= render_svg "icons/delete", title: "Edit", styles: "fill-current text-gray-400 w-5 h-5 hover:text-indigo-600"%>
+            <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</li>

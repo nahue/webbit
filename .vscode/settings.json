@@ -1,0 +1,18 @@
+{
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "[erb]": {
+        "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+    },
+    "files.associations": {
+        "*.html.erb": "erb"
+    },
+    "rubyLsp.formatter": "auto",
+    // All of these settings are scoped only to the Ruby language
+    "[ruby]": {
+        "editor.defaultFormatter": "Shopify.ruby-lsp", // Use the Ruby LSP as the default formatter
+        "editor.insertSpaces": true, // Use spaces and not tabs for indentantion
+        "editor.semanticHighlighting.enabled": true, // Enable semantic highlighting
+        "editor.formatOnType": true // Enable formatting while typing
+    }
+}

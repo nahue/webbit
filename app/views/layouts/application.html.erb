@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-  <body class="relative h-screen overflow-x-hidden bg-gray-200">
+  <body class="relative h-screen overflow-x-hidden bg-gray-200 accent-indigo-600">
     <% flash.each do |type, message| %>
       <% if type == "alert" %>
         <div class="bg-red-500">
@@ -99,7 +99,7 @@
       </div>
     </div>
   </nav>
-  <div class="container py-6 mx-auto">
+  <div class="container px-6 py-6 mx-auto">
     <%= yield %>
   </div>
 </body>

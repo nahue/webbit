@@ -1,12 +1,12 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation" data-turbo-cache="false">
-    <h2>
+  <div id="error_explanation" class="p-4 mb-3 text-red-700 border border-red-300 rounded bg-red-50" data-turbo-cache="false">
+    <h2 class="mb-6 font-bold leading-tight">
       <%= I18n.t("errors.messages.not_saved",
                  count: resource.errors.count,
                  resource: resource.class.model_name.human.downcase)
        %>
     </h2>
-    <ul>
+    <ul class="pl-6 list-disc">
       <% resource.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
