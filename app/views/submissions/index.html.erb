@@ -1,23 +1,28 @@
 <% content_for :primary_content do %>
-  <% if @submissions.any? %>
-    <div id="submissions">
-      <ul class="divide-y">
-        <% @submissions.each do |submission| %>
-          <%= render submission %>
-        <% end %>
-      </ul>
-    </div>
-  <% else %>
-    <div class="p-10 text-center">
-      <div class="flex justify-center mb-3">
-        <%= render_svg "icons/empty"%>
-      </div>
-      <p class="mb-4">Empty...</p>
-      <%= link_to "Create a new post", new_submission_path, class: "btn btn-indigo" %>
-    </div>
-  <% end %>
+    <% if @submissions.any? %>
+        <div id="submissions">
+            <ul class="divide-y">
+                <% @submissions.each do |submission| %>
+                    <%= render submission %>
+                <% end %>
+            </ul>
+        </div>
+    <% else %>
+        <div class="p-10 text-center">
+            <div class="flex justify-center mb-3">
+                <%= render_svg "icons/empty"%>
+            </div>
+            <p class="mb-4">Empty...</p>
+            <%= link_to "Create a new post", new_submission_path, class: "btn btn-indigo" %>
+        </div>
+    <% end %>
 <% end %>
 <% content_for :secondary_content do %>
-  <%= link_to "New submission", new_submission_path, class: "btn btn-indigo" %>
+    <div class="mb-6">
+        <%= link_to "New submission", new_submission_path, class: "btn btn-indigo block text-center" %>
+    </div>
+    <div class="mb-6">
+        <%= link_to "New community", new_community_path, class: "btn btn-white block text-center" %>
+    </div>
 <% end %>
 <%= render "basic_layout" %>
